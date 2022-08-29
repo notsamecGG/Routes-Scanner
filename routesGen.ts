@@ -117,9 +117,5 @@ export class RouteGenerator
         str += "} \n\nexport default manifest;\n\n";
 
         Deno.writeTextFile(this.outFilePath, str);
-        console.log(import.meta.url);
     }
 }
-
-const x = new RouteScanner();
-const _ = new RouteGenerator(x.routes);

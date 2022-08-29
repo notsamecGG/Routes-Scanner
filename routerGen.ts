@@ -12,7 +12,7 @@ export function createPage(components: Element, title="Document"): string
 }
 
 
-function generateRouter(outFilePath="./router.gen.tsx")
+export default function generateRouter(outFilePath="./router.gen.tsx")
 {
     let str = `// AUTOMATICALLY GENERATED CODE, regenerates everytime any RouterGenerator is run 
 import { Router, Context } from "oak";
@@ -56,7 +56,4 @@ import { createPage } from "./routerGen.ts";\n`;
 
     str += `\n\nexport default router;\n`;
     Deno.writeTextFile(outFilePath, str);
-    console.log(str);
 }
-
-generateRouter();
