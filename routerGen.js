@@ -2,8 +2,9 @@
 import manifest from "./routes.gen.ts";
 import { html } from "./basicHTML.ts";
 import { render } from "preact-render-to-string";
+import { existsSync } from "fs";
 
-export function createPage(components: Element, title="Document"): string
+export function createPage(components, title="Document")
 {
     const pageHtml = html;
     pageHtml.title = title;
@@ -17,8 +18,8 @@ export default function generateRouter(outFilePath="./router.gen.tsx")
 {
     let str = `// AUTOMATICALLY GENERATED CODE, regenerates everytime any RouterGenerator is run 
 import { Router, Context } from "oak";
-import { createPage } from "./routerGen.ts";\n`;
-
+import { createPage } from "./routerGen.js";\n`;
+    
     for (const [index, route] of manifest.routes.entries())
     {
         const defaultFunc = Object(route.module)["default"];
@@ -58,3 +59,6 @@ import { createPage } from "./routerGen.ts";\n`;
     str += `\n\nexport default router;\n`;
     Deno.writeTextFile(outFilePath, str);
 }
+
+if (!existsSync("./router.gen.tsx"))
+    generateRouter();

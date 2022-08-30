@@ -1,5 +1,5 @@
 import { RouteScanner, RouteGenerator } from "./routesGen.ts";
-import generateRouter from "./routerGen.ts";
+import generateRouter from "./routerGen.js";
 
 export default async function generate(routesPath="../routes")
 {
@@ -12,3 +12,5 @@ export default async function generate(routesPath="../routes")
     const module = await import("./router.gen.tsx");
     return module.default;
 }
+
+export { createPage } from "./routerGen.js";

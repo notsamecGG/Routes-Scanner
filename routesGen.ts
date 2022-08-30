@@ -1,4 +1,4 @@
-import { ensureFileSync } from "fs";
+import { ensureFileSync, existsSync } from "fs";
 
 interface iRoute
 {
@@ -119,3 +119,12 @@ export class RouteGenerator
         Deno.writeTextFile(this.outFilePath, str);
     }
 }
+
+export default function generateRoutesFile(routesPath="../routes")
+{
+    const scanner = new RouteScanner(routesPath);
+    const _ = new RouteGenerator(scanner.routes);
+}
+
+if (!existsSync("./routes.gen.ts"))
+    generateRoutesFile();
