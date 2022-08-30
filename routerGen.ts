@@ -1,3 +1,4 @@
+/// <reference path="https://deno.land/std@0.37.0/types/react.d.ts" />
 import manifest from "./routes.gen.ts";
 import { html } from "./basicHTML.ts";
 import { render } from "preact-render-to-string";
