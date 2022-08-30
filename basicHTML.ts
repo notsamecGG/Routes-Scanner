@@ -10,8 +10,8 @@ export const html = new DOMParser().parseFromString(`
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello World!<h1/>
-  <div id="app"><div/>
+  <h1>Hello World!</h1>
+  <div id="app"></div>
 </body>
 </html>`,
 "text/html",

@@ -6,9 +6,9 @@ I recommend to move all of the files from this repo into separate file, which ca
 
 Your routes should export default react/preact component and can export {config}, where you can specify route's method and title
 
-1. Create new RouteScanner from routesGen.ts (you can specify relative path to your routes dir)
-1. Create new RouteGenerator, initialized with your routes (your RouteScanner.routes)
-1. Call generateRouter function from routerGen.ts
+1. import generate from "routerGenerator/main.ts";
+1. const router = await generate("./routes");
+1. done :)
 
 You should be all set up now!
 
