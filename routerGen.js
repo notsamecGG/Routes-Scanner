@@ -2,7 +2,6 @@
 import manifest from "./routes.gen.ts";
 import { html } from "./basicHTML.ts";
 import { render } from "preact-render-to-string";
-import { existsSync } from "fs";
 
 export function createPage(components, title="Document")
 {
@@ -59,6 +58,3 @@ import { createPage } from "./routerGen.js";\n`;
     str += `\n\nexport default router;\n`;
     Deno.writeTextFile(outFilePath, str);
 }
-
-if (!existsSync("./router.gen.tsx"))
-    generateRouter();

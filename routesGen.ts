@@ -1,4 +1,4 @@
-import { ensureFileSync, existsSync } from "fs";
+import { ensureFileSync } from "fs";
 
 interface iRoute
 {
@@ -53,7 +53,7 @@ export class RouteScanner
      * @param fileName: file name + .type (/home/path/to/file.txt => file.txt)
      * @param path: (/path/to/file.txt)
      */
-    parseRoute(fileName:string, path: string): void
+    parseRoute(fileName: string, path: string): void
     {
         if (fileName[0] == "_")
             return
@@ -96,6 +96,9 @@ export class RouteGenerator
         this.routes = routes;
         this.outFilePath = Deno.realPathSync(outFilePath);
 
+        const path = Deno.realPathSync(outFilePath);
+        console.log(path);
+
         this.generateManifest();
     }
 
@@ -125,6 +128,3 @@ export default function generateRoutesFile(routesPath="../routes")
     const scanner = new RouteScanner(routesPath);
     const _ = new RouteGenerator(scanner.routes);
 }
-
-if (!existsSync("./routes.gen.ts"))
-    generateRoutesFile();
